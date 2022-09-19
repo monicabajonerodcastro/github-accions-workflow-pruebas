@@ -24,7 +24,7 @@ jobs:
         if: ${{ failure() }}
         env:
           MENSAJE_ERROR: Una o varias pruebas fallaron
-        run: echo "::set-output name=respuesta::${MENSAJE_ERROR}
+        run: echo "::set-output name=respuesta::${MENSAJE_ERROR}"
       - name: Validar resultado sin errores
         if: ${{ success() }}
         env:
