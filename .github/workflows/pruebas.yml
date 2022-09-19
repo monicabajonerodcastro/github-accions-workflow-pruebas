@@ -19,5 +19,6 @@ jobs:
       - name: Cálculo de cubrimiento
         id: cubrimiento
         run: |
+          pip3 install --user -r requirements.txt
           coverage run -m unittest tests/test_persona.py
           coverage report -m
