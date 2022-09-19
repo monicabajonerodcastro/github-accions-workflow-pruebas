@@ -1,12 +1,16 @@
 import datetime
-#from Comunidad.base import Session, engine, Base
-#from sqlalchemy import Column, Integer, String
+'''
+from Comunidad.base import Session, engine, Base
+from sqlalchemy import Column, Integer, String
+'''
 
 class Persona:
-    #__tablename__ = 'persona'
-    #id = Column(Integer, primary_key=True)
-    #nombre = Column(String)
-    #edad = Column(Integer)
+    '''
+    __tablename__ = 'persona'
+    id = Column(Integer, primary_key=True)
+    nombre = Column(String)
+    edad = Column(Integer)
+    '''
 
     def __init__(self, nombre, edad):
         self.__nombre = nombre
