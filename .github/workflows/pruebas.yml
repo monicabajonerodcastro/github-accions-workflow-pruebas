@@ -13,12 +13,25 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: '3.7'
+      - name: Instalación de liberías y dependencias
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
       - name: Correr pruebas
         id: correr-pruebas
         run: python -m unittest tests/test_persona.py
+      - name: Validar resultado con errores
+        if: ${{ failure() }}
+        env:
+          MENSAJE_ERROR: Una o varias pruebas fallaron
+        run: echo "::set-output name=respuesta::${MENSAJE_ERROR}
+      - name: Validar resultado sin errores
+        if: ${{ success() }}
+        env:
+          MENSAJE_EXITO: Todas las pruebas fueron exitosas
+        run: echo "::set-output name=respuesta::${MENSAJE_EXITO}
       - name: Cálculo de cubrimiento
         id: cubrimiento
         run: |
-          pip3 install --user -r requirements.txt
           coverage run -m unittest tests/test_persona.py
           coverage report -m
