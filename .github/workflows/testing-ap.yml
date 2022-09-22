@@ -38,7 +38,7 @@ jobs:
     name: Mezclar a develop
     runs-on: ubuntu-latest
     needs: correr-pruebas
-    if: ${{ $ESTADO_PRUEBAS && contains(github.event.head_commit.message, 'release') }}
+    if: ${{ contains(github.event.head_commit.message, 'release') }}
     steps:
       - name: Mezclar a develop
         uses: tukasz/direct-merge-action@master
