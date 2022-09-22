@@ -50,7 +50,7 @@ jobs:
           target-branch: develop
       - name: Crear release
         run: |
-          git checkout develop
+          git fetch && checkout develop
           git checkout -b release/${{ github.run_id }}
           git push -f -u origin release/${{ github.run_id }}
       - name: Mezclar con rama main
