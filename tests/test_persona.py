@@ -45,3 +45,7 @@ class PersonaTestCase(unittest.TestCase):
 
     def test_testing(self):
         self.assertEqual(0, 1)
+
+    def test_test1(self):
+        self.assertEqual(1, 1)
+
