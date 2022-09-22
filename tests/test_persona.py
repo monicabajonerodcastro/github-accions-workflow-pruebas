@@ -47,5 +47,5 @@ class PersonaTestCase(unittest.TestCase):
         self.assertEqual(0, 1)
 
     def test_test1(self):
-        self.assertEqual(1, 1)
+        self.assertEqual(1, 0)
 
