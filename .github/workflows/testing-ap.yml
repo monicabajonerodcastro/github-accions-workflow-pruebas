@@ -35,7 +35,7 @@ jobs:
           target-branch: develop
 
   mezclar-a-develop-crear-release:
-    name: Mezclar a develop
+    name: Mezclar a develop y crear release
     runs-on: ubuntu-latest
     needs: correr-pruebas
     if: ${{ contains(github.event.head_commit.message, 'release') }}
