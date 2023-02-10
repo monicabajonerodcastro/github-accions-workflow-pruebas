@@ -48,11 +48,11 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           source-branch: ${{ github.ref }}
           target-branch: develop
-      - name: Crear release
+      - name: Crear release #Se crea release con número del job para que se diferencie cada vez que se crea un release diferente
         run: |
           git fetch && git checkout develop
-          git checkout -b release/${{ github.run_id }}
-          git push -f -u origin release/${{ github.run_id }}
+          git checkout -b release/${{ github.run_number }}
+          git push -f -u origin release/${{ github.run_number }}
       - name: Mezclar con rama main
         run: |
           git checkout main
