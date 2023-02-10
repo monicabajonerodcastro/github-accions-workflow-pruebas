@@ -25,10 +25,10 @@ jobs:
     needs: correr-pruebas
     runs-on: ubuntu-latest
     steps:
-      - name: Revisar cubrimiento minimo 80
+      - name: check
         uses: inzephirum/gha-test-coverage-check
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          min_threshold: '80'
+          min_threshold: '100'
           report_file_path: './coverage/lcov.info'
     
