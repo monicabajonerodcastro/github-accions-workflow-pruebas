@@ -26,10 +26,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Revisar cubrimiento minimo 80
-        uses: devmasx/coverage-check-action@v1.2.0
+        uses: inzephirum/gha-test-coverage-check
         with:
-          type: lcov
-          result_path: coverage/example.lcov
-          min_coverage: 80
-          token: ${{ github.token }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          min_threshold: '80'
+          report_file_path: './coverage/lcov.info'
     
