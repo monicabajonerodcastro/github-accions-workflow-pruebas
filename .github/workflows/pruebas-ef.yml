@@ -20,18 +20,20 @@ jobs:
           pip install -r requirements.txt
       - name: Correr pruebas
         run: python -m unittest discover -s tests -v
+      - name: Algo
+        run: echo ${{github.event.review.state}}
 
-  mezclar-a-main:
-    name: Mezclar a main
-    runs-on: ubuntu-latest
-    needs: correr-pruebas
-    if: github.event.review.state == 'approved'
-    steps:
-      - name: Mezclar a main
-        uses: tukasz/direct-merge-action@master
-        with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          source-branch: ${{ github.ref }}
-          target-branch: master
+  #mezclar-a-main:
+  #  name: Mezclar a main
+  #  runs-on: ubuntu-latest
+  #  needs: correr-pruebas
+  #  if: github.event.review.state == 'approved'
+  #  steps:
+  #    - name: Mezclar a main
+  #      uses: tukasz/direct-merge-action@master
+  #      with:
+  #        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  #        source-branch: ${{ github.ref }}
+  #        target-branch: master
 
     
