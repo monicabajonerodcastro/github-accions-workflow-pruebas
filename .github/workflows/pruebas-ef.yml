@@ -1,7 +1,17 @@
 name: Backend-Workflow
 on: 
-  pull_request_review:
-    types: [submitted]
+  pull_request:
+    types:
+      - labeled
+      - unlabeled
+      - synchronize
+      - opened
+      - edited
+      - ready_for_review
+      - reopened
+      - unlocked
+    branches: [master]
+      
 jobs:
   correr-pruebas:
     name: Correr pruebas
