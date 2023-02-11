@@ -44,4 +44,4 @@ class PersonaTestCase(unittest.TestCase):
         self.assertNotIsInstance(self.grupo, Persona)
 
     def test_de_probar(self):
-        self.assertEqual(0,0)
+        self.assertEqual(1,0)
