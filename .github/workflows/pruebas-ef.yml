@@ -1,9 +1,7 @@
 name: Backend-Workflow
 on: 
-  push:
-    branches: [master]
-  #pull_request_review:
-  #  types: [submitted]
+  pull_request_review:
+    types: [submitted]
 jobs:
   correr-pruebas:
     name: Correr pruebas
