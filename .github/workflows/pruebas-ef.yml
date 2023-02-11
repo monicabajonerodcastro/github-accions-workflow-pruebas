@@ -20,5 +20,5 @@ jobs:
           pip install -r requirements.txt
       - name: Correr pruebas
         run: python -m unittest discover -s tests -v
-      - name: Algo
+      - name: Algo por fa
         run: echo ${{github.event.review.state}}
