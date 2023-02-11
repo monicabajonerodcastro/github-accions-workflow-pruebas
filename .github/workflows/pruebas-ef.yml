@@ -34,14 +34,12 @@ jobs:
 
   mezclar-a-main:
     name: Mezclar a main
-    runs-on: ubuntu-latest
     needs: correr-pruebas
+    runs-on: ubuntu-latest
     if: github.event.review.state == 'approved'
     steps:
       - name: Mezclar a main
-        uses: tukasz/direct-merge-action@master
-        with:
+        uses: tpascalgn/automerge-action@4536e8847eb62fe2f0ee52c8fa92d17aa97f932f
+        env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          source-branch: ${{ github.ref }}
-          target-branch: master
-
+          MERGE_LABELS: ""
