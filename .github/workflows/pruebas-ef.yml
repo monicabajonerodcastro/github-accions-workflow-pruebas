@@ -1,7 +1,7 @@
 name: Backend-Workflow
 on: 
-  push:
-    branches: [master]
+  pull_request_review:
+    types: [submitted]
 jobs:
   correr-pruebas:
     name: Correr pruebas
@@ -20,14 +20,17 @@ jobs:
       - name: Correr pruebas
         run: python -m unittest discover -s tests -v
 
-  revisar-cubrimiento:
-    name: Revisar cubrimiento
-    needs: correr-pruebas
+  mezclar-a-main:
+    name: Mezclar a main
+    if: github.event.review.state == 'approved'
     runs-on: ubuntu-latest
+    needs: correr-pruebas
     steps:
-      - name: Cálculo de cubrimiento
-        id: cubrimiento
-        run: |
-            coverage run -m unittest tests/test_persona.py
-            coverage report -m
+      - name: Mezclar a main
+        uses: tukasz/direct-merge-action@master
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          source-branch: ${{ github.ref }}
+          target-branch: master
+
     
