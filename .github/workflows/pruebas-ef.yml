@@ -21,7 +21,7 @@ jobs:
     steps:
       - name: Checkout del repositorio
         uses: actions/checkout@v2
-      - name: Configuración de entorno de python
+      - name: Configuración de entorno python
         uses: actions/setup-python@v2
         with:
           python-version: '3.7'
