@@ -72,5 +72,5 @@ jobs:
       - name: Mezclar a main
         run: |
           git fetch && git checkout master
-          git merge develop
+          git merge origin develop 
           git push origin master
