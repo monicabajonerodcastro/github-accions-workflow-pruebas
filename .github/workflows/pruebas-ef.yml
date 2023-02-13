@@ -73,6 +73,6 @@ jobs:
         run: |
           git fetch && git checkout master
           git config --global user.email "${{github.event.head_commit.author.email}}"
-          git config --global user.name "${{github.event.head_commit.name}}"
+          git config --global user.name "${{github.event.head_commit.author.name}}"
           git merge develop --allow-unrelated-histories
           git push origin master
