@@ -72,5 +72,7 @@ jobs:
       - name: Mezclar a main
         run: |
           git fetch && git checkout master
+          git config --global user.email "${{github.event.head_commit.author.email}}"
+          git config --global user.name "${{github.event.head_commit.name}}"
           git merge develop --allow-unrelated-histories
           git push origin master
