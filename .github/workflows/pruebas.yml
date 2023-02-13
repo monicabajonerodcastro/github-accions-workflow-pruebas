@@ -1,7 +1,7 @@
 name: Pruebas unitarias
 on:
   push:
-    branches: [masterx]
+    branches: [masterxx]
 jobs:
   job1:
     name: Pruebas
