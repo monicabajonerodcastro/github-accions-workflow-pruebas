@@ -31,6 +31,8 @@ jobs:
         with:
           msg: ${{github.event.head_commit.message}}
           separator: '-'
+      - name: Checkout del repositorio
+        uses: actions/checkout@v2
       - name: Crear release
         run: |
           git fetch && git checkout develop
