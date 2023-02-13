@@ -1,0 +1,33 @@
+name: Backend-Workflow
+on: 
+  pull_request_review:
+    types: [submitted]
+jobs:
+  correr-pruebas:
+    name: Correr pruebas
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout del repositorio
+        uses: actions/checkout@v2
+      - name: Configuración de entorno python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.7'
+      - name: Instalación de liberías y dependencias
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Correr pruebas
+        run: python -m unittest discover -s tests -v
+
+  mezclar-a-main:
+    name: Mezclar a main
+    needs: correr-pruebas
+    runs-on: ubuntu-latest
+    if: github.event.review.state == 'approved'
+    steps:
+      - name: Mezclar a main
+        uses: "pascalgn/automerge-action@4536e8847eb62fe2f0ee52c8fa92d17aa97f932f"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MERGE_LABELS: ""
