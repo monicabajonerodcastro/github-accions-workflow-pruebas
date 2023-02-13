@@ -45,5 +45,5 @@ class PersonaTestCase(unittest.TestCase):
         self.assertNotIsInstance(self.grupo, Persona)
 
     def test_testing(self):
-        self.assertEqual(0, 0)
+        self.assertEqual(0, 1)
 
